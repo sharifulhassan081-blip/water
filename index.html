@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ripple — your daily water diary</title>
+  <meta name="description" content="Ripple is a calm, Pinterest-style water tracker. Create a profile with just a name and a passkey, log every glass, and keep your streak alive." />
+  <meta name="theme-color" content="#f6f2ea" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2338bdf8'/%3E%3Cstop offset='1' stop-color='%23047857'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='%230b2b3c'/%3E%3Cpath d='M16 5c4.5 5.7 7 9.2 7 12.4A7 7 0 0 1 9 17.4C9 14.2 11.5 10.7 16 5Z' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true">
+    <span class="glow glow-a"></span>
+    <span class="glow glow-b"></span>
+    <span class="glow glow-c"></span>
+  </div>
+
+  <!-- ============================ AUTH ============================ -->
+  <div class="auth" id="authView">
+    <section class="auth-art">
+      <div class="brand brand-lg">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26"><path d="M16 4c4.8 6.1 7.5 9.8 7.5 13.2a7.5 7.5 0 1 1-15 0C8.5 13.8 11.2 10.1 16 4Z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-word">ripple</span>
+      </div>
+
+      <div class="auth-copy">
+        <p class="eyebrow">A water diary that looks good on your board</p>
+        <h1>Drink up.<br /><em>Keep the streak.</em></h1>
+        <p class="auth-lede">
+          No email, no verification links. Pick a name, choose a passkey, and your little
+          hydration world is ready — glasses, goals, streaks and a garden that grows with you.
+        </p>
+      </div>
+
+      <div class="collage" aria-hidden="true">
+        <figure class="collage-item c1"><img src="assets/img/lemon-tall.jpg" alt="" loading="lazy" /></figure>
+        <figure class="collage-item c2"><img src="assets/img/bottle-plants.jpg" alt="" loading="lazy" /></figure>
+        <figure class="collage-item c3"><img src="assets/img/lemon-glass.jpg" alt="" loading="lazy" /></figure>
+        <figure class="collage-item c4"><img src="assets/img/ripple.jpg" alt="" loading="lazy" /></figure>
+        <div class="collage-chip chip-streak"><span>🔥</span> 12-day streak</div>
+        <div class="collage-chip chip-goal"><span>💧</span> 8 / 8 glasses</div>
+        <div class="collage-chip chip-grow"><span>🌷</span> garden +3</div>
+      </div>
+
+      <ul class="auth-points">
+        <li><strong>Name + passkey</strong><span>No email ever asked</span></li>
+        <li><strong>Daily target</strong><span>Set your glasses, keep the promise</span></li>
+        <li><strong>Pinterest-style board</strong><span>Streaks, badges, a tiny garden</span></li>
+      </ul>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="segmented" role="tablist" aria-label="Log in or create a profile">
+          <button type="button" class="seg-btn is-active" data-mode="login" role="tab" aria-selected="true">Log in</button>
+          <button type="button" class="seg-btn" data-mode="signup" role="tab" aria-selected="false">New profile</button>
+          <span class="seg-thumb" aria-hidden="true"></span>
+        </div>
+
+        <form id="authForm" novalidate>
+          <h2 id="authTitle">Welcome back</h2>
+          <p class="auth-sub" id="authSub">Your passkey is the only key. Keep it close.</p>
+
+          <label class="field">
+            <span class="field-label">Your name</span>
+            <input id="nameInput" name="name" type="text" autocomplete="username" placeholder="e.g. Ayaan" maxlength="24" required />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Passkey</span>
+            <span class="field-with-action">
+              <input id="passInput" name="passkey" type="password" autocomplete="current-password" placeholder="At least 4 characters" maxlength="64" required />
+              <button type="button" class="eye" id="eyeBtn" aria-label="Show passkey" aria-pressed="false">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6"/></svg>
+              </button>
+            </span>
+          </label>
+
+          <div id="signupFields" hidden>
+            <label class="field">
+              <span class="field-label">Confirm passkey</span>
+              <input id="passConfirmInput" type="password" autocomplete="new-password" placeholder="Type it again" maxlength="64" />
+            </label>
+
+            <div class="signup-grid">
+              <div class="mini-field">
+                <span class="field-label">Daily target</span>
+                <div class="stepper" data-stepper="target">
+                  <button type="button" data-step="-1" aria-label="Fewer glasses">−</button>
+                  <output id="targetOut">8 glasses</output>
+                  <button type="button" data-step="1" aria-label="More glasses">+</button>
+                </div>
+              </div>
+              <div class="mini-field">
+                <span class="field-label">Glass size</span>
+                <select id="glassSelect" class="select">
+                  <option value="200">200 ml · small</option>
+                  <option value="250" selected>250 ml · classic</option>
+                  <option value="300">300 ml · tumbler</option>
+                  <option value="400">400 ml · big</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <p class="form-error" id="authError" role="alert" hidden></p>
+
+          <button class="btn btn-primary btn-block" type="submit" id="authSubmit">
+            <span>Log in</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </button>
+
+          <button type="button" class="btn btn-quiet btn-block" id="demoBtn">Peek inside the demo profile</button>
+
+          <p class="fineprint">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="2.5"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/></svg>
+            Profiles are stored in this browser only. Clearing site data removes them.
+          </p>
+        </form>
+      </div>
+      <p class="auth-note">Made for slow mornings, long afternoons and one more glass before bed.</p>
+    </section>
+  </div>
+
+  <!-- ============================ APP ============================ -->
+  <div id="appView" class="app" hidden>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M16 4c4.8 6.1 7.5 9.8 7.5 13.2a7.5 7.5 0 1 1-15 0C8.5 13.8 11.2 10.1 16 4Z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-word">ripple</span>
+      </div>
+
+      <div class="search" role="search">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="searchInput" type="search" placeholder="Search your board — streaks, badges, tips…" aria-label="Search your board" />
+        <kbd>/</kbd>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="icon-btn" id="soundBtn" title="Toggle sound" aria-label="Toggle sound">
+          <span id="soundIcon">🔊</span>
+        </button>
+        <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle dark mode">
+          <span id="themeIcon">☾</span>
+        </button>
+        <button class="avatar-btn" id="profileBtn" aria-label="Open profile settings">
+          <span class="avatar" id="topAvatar">🫧</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="greeting">
+        <div>
+          <p class="eyebrow" id="todayLabel">Thursday, 20 November</p>
+          <h1 class="greet-title" id="greetTitle">Good afternoon, <em>Ayaan</em></h1>
+          <p class="greet-sub" id="greetSub">Two glasses in. Your board is looking thirsty.</p>
+        </div>
+        <div class="greeting-actions">
+          <button class="btn btn-ghost" id="settingsBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6M18.4 18.4l-1.6-1.6M7.2 7.2 5.6 5.6"/></svg>
+            Customize
+          </button>
+          <button class="btn btn-ghost" id="logoutBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7M17 8.5 20.5 12 17 15.5M20.5 12H10"/></svg>
+            Log out
+          </button>
+        </div>
+      </section>
+
+      <section id="hero" class="hero" aria-label="Today's progress"></section>
+
+      <div class="chips" id="chips" role="tablist" aria-label="Filter the board">
+        <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">Everything</button>
+        <button class="chip" data-filter="today" role="tab" aria-selected="false">Today</button>
+        <button class="chip" data-filter="trends" role="tab" aria-selected="false">Trends</button>
+        <button class="chip" data-filter="streak" role="tab" aria-selected="false">Streaks</button>
+        <button class="chip" data-filter="fun" role="tab" aria-selected="false">Fun</button>
+        <button class="chip" data-filter="photos" role="tab" aria-selected="false">Moodboard</button>
+        <button class="chip" data-filter="saved" role="tab" aria-selected="false">Saved</button>
+      </div>
+
+      <section class="board" id="board" aria-live="polite"></section>
+      <div class="board-empty" id="boardEmpty" hidden>
+        <span>🫧</span>
+        <h3>No pins match that</h3>
+        <p>Try another word, or clear the search to see your whole board.</p>
+      </div>
+
+      <footer class="site-foot">
+        <span>ripple · a tiny water diary</span>
+        <span class="foot-dot">•</span>
+        <span id="footTotal">0 glasses logged</span>
+        <span class="foot-dot">•</span>
+        <button class="linklike" id="exportBtn">Export my data</button>
+      </footer>
+    </main>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
+  <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

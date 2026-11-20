@@ -1,0 +1,10 @@
+# dependencies & local tooling
+node_modules/
+.cache/
+.venv/
+__pycache__/
+
+# editor / OS
+.DS_Store
+Thumbs.db
+*.log
