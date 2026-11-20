@@ -5,6 +5,8 @@ streaks, badges, a tiny flower garden and a moodboard you can save pins to.
 
 No framework, no build step, no backend — open it and drink.
 
+**Live:** https://ripple-water.vercel.app/
+
 ![Moodboard pins](assets/img/lemon-glass.jpg)
 
 ## What's inside
@@ -28,6 +30,12 @@ No framework, no build step, no backend — open it and drink.
 - **Gentle nudges** — optional in-app reminders (and browser notifications) every 30–120 minutes while the tab is open.
 - **Moodboard** — photo pins you can save, plus a quote and a rotating hydration note.
 - **Kitchen-sink settings** — avatar emoji + colour, units (ml / fl oz), light/dark theme, pour sound, JSON export, profile deletion.
+
+## Deployed on Vercel
+
+- Production URL: **https://ripple-water.vercel.app/**
+- Vercel project: `ripple-water` (static deployment, no build command, output = repo root)
+- Deployment: built from the `arena/59b1c830-water` branch (commit `f110b4e`)
 
 ## Run it
 
